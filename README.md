@@ -72,7 +72,7 @@ No backend, no database, no tracking. Pure frontend magic.
 
 ## 📸 Screenshots (界面预览)
 
-*(建议在此处放一张截图，文件名可以是 screenshot.png)*
+![预览图](./screenshot.png)
 ---
 
 ## ⚠️ Disclaimer (免责声明)
