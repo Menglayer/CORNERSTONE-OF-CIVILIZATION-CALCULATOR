@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>人类文明基石标的计算器 | Apex Cornerstone</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><path fill=%22%23f7931a%22 d=%22M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248z%22/><path fill=%22%23fff%22 d=%22M395.25 225.5c8-26-2.5-44.5-22-55.5 16-20.5 14.5-44.5-6.5-58-23.5-15-59.5-12.5-59.5-12.5l13-52-30.5-7.5-13 51c-8-2-16-4-24-6l13-52-30.5-7.5-13 51c-6.5-1.5-13-3-19.5-4.5l-42-10.5-8 32s22.5 5 22 7c11.5 3 13.5 11 13.5 11l-13 52-18.5 73.5c-1.5.5-4.5 1.5-11.5 0-2.5-2-22-7-22-7l-14.5 33.5 39.5 10c7.5 2 14.5 4 22 6l-13.5 54 30.5 7.5 13.5-53c8 2 16 4 24 6l-13.5 53 30.5 7.5 13.5-54c25 4.5 47 8 63.5 1.5 24-9.5 40.5-30.5 42-57 1-18.5-11-30-23-38 16.5-4 28-15.5 31-39zM256 382c-39.5 0-71.5-32-71.5-71.5S216.5 239 256 239s71.5 32 71.5 71.5S295.5 382 256 382z%22/></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="glow-bg glow-purple"></div>
+    <div class="glow-bg glow-cyan"></div>
+    <div class="grid-texture"></div>
+    
+    <div class="container">
+        <header class="fade-in">
+            <div class="brand-group">
+                <div class="logo-box">
+                    <i class="fa-brands fa-bitcoin"></i>
+                </div>
+                <div class="titles">
+                    <h1>人类文明基石标的计算器</h1>
+                    <span class="subtitle">CORNERSTONE OF CIVILIZATION CALCULATOR</span>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <a href="https://x.com/menglayer" target="_blank" class="icon-link" aria-label="X (Twitter)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://t.me/menglayer" target="_blank" class="icon-link" aria-label="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+                <div class="divider-v"></div>
+                <button class="btn-glass" onclick="toggleLang()">
+                    <i class="fa-solid fa-language"></i> <span id="langText">EN / 中文</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <section class="col-left fade-up delay-1">
+                <div class="panel control-panel">
+                    <div class="panel-title">
+                        <i class="fa-solid fa-sliders"></i> <span data-i18n="settingsTitle">配置引擎</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="lblTarget">核心标的 (Target)</label>
+                        <div class="assets-grid" id="assetContainer">
+                            </div>
+                        <div id="compositionDesc" class="comp-tag"></div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label data-i18n="lblInitial">初始本金 (Lump Sum)</label>
+                            <div class="input-box">
+                                <i class="fa-solid fa-wallet"></i>
+                                <input type="number" id="initialCapital" value="10000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="lblAmount">定投金额 (DCA)</label>
+                            <div class="input-box">
+                                <i class="fa-solid fa-coins"></i>
+                                <input type="number" id="amount" value="2000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-i18n="lblFreq">定投频率</label>
+                        <div class="freq-toggle">
+                            <input type="radio" name="freq" id="freq-daily" value="daily">
+                            <label for="freq-daily" data-i18n="optDaily">日</label>
+                            
+                            <input type="radio" name="freq" id="freq-weekly" value="weekly">
+                            <label for="freq-weekly" data-i18n="optWeekly">周</label>
+                            
+                            <input type="radio" name="freq" id="freq-monthly" value="monthly" checked>
+                            <label for="freq-monthly" data-i18n="optMonthly">月</label>
+                        </div>
+                    </div>
+
+                    <div class="advanced-group">
+                        <div class="slider-row">
+                            <label data-i18n="lblStepUp">每年增加投入 (+%)</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="stepUpRate" min="0" max="30" value="0">
+                                <span id="stepUpVal">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="switch-row">
+                            <label data-i18n="lblInflation">扣除通胀 (3%)</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="inflationToggle">
+                                <span class="slider-round"></span>
+                            </label>
+                        </div>
+
+                        <div class="years-row">
+                            <div class="year-input">
+                                <label data-i18n="lblDuration">回测年限</label>
+                                <input type="number" id="historyYears" value="10" max="15" min="1">
+                            </div>
+                            <div class="year-input">
+                                <label data-i18n="lblFuture">未来推演</label>
+                                <input type="number" id="futureYears" value="10" max="40" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <details class="expert-mode">
+                        <summary><i class="fa-solid fa-wrench"></i> <span data-i18n="advSettings">专家模式：修正年化率</span></summary>
+                        <div class="expert-content">
+                            <p data-i18n="cagrNote">* 默认加载该标的近10年真实CAGR。</p>
+                            <div class="input-box small">
+                                <input type="number" id="customApy" step="0.1">
+                                <span class="suffix">%</span>
+                            </div>
+                        </div>
+                    </details>
+                    
+                    </div>
+            </section>
+
+            <section class="col-right fade-up delay-2">
+                <div class="data-cards">
+                    <div class="card glass">
+                        <span class="label" data-i18n="lblTotalInvested">总投入本金</span>
+                        <div class="value" id="resPrincipal">$0</div>
+                    </div>
+                    <div class="card glass highlight-card">
+                        <span class="label"><i class="fa-solid fa-bolt"></i> <span data-i18n="lblPastAPY">历史回测 APY</span></span>
+                        <div class="value neon-cyan neon-pulse" id="resApyBig">0%</div>
+                        <div class="tag"><span data-i18n="lblNetValue">净值</span>: <span id="resPastValueSmall">$0</span></div>
+                    </div>
+                    <div class="card glass">
+                        <span class="label"><i class="fa-solid fa-eye"></i> <span data-i18n="lblFutureValue">未来推演净值</span></span>
+                        <div class="value neon-purple neon-pulse" id="resFutureValue">$0</div>
+                    </div>
+                </div>
+
+                <div class="panel chart-panel">
+                    <h3 data-i18n="chartTitle">财富增长曲线</h3>
+                    <div class="chart-box">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="panel table-panel">
+                    <h3 data-i18n="tableTitle">年度详细预测 (Yearly Projection)</h3>
+                    <div class="table-container">
+                        <table id="projectionTable">
+                            <thead>
+                                <tr>
+                                    <th data-i18n="thYear">年份</th>
+                                    <th data-i18n="thInvested">本金</th>
+                                    <th data-i18n="thBalance">总资产</th>
+                                    <th data-i18n="thProfit">收益率</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="fade-up delay-3">
+            <div class="disclaimer">Historical data updated Nov 2024. Not financial advice.</div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
