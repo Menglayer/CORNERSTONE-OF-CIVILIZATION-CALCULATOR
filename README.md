@@ -1,4 +1,4 @@
-# 🏛️ Apex Cornerstone | 人类文明基石标的计算器
+# 🏛️ Apex Cornerstone | 人类文明基石定投计算器
 ### Civilization Assets Calculator
 
 > **"Long-termism is the highest form of intelligence."** > **"长期主义是最高级的智慧。"**
