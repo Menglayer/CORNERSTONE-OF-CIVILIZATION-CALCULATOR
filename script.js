@@ -6,9 +6,9 @@ const ASSETS = {
         components: ["NVDA", "BTC", "GOLD", "AAPL", "GOOG", "ASML"],
         cagr: 0.35 
     },
-    "BTC": { id: "BTC", icon: "fa-brands fa-bitcoin", name_zh: "比特币 (BTC)", name_en: "Bitcoin", cagr: 0.20 },
-    "GOLD": { id: "GOLD", icon: "fa-solid fa-ring", name_zh: "黄金 (GOLD)", name_en: "Gold", cagr: 0.05 },
-    "QQQ": { id: "QQQ", icon: "fa-solid fa-chart-line", name_zh: "纳指100 (QQQ)", name_en: "Nasdaq 100", cagr: 0.11 },
+    "BTC": { id: "BTC", icon: "fa-brands fa-bitcoin", name_zh: "比特币", name_en: "Bitcoin", cagr: 0.20 },
+    "GOLD": { id: "GOLD", icon: "fa-solid fa-ring", name_zh: "黄金", name_en: "Gold", cagr: 0.05 },
+    "QQQ": { id: "QQQ", icon: "fa-solid fa-chart-line", name_zh: "纳指100", name_en: "Nasdaq 100", cagr: 0.11 },
     "SP500": { id: "SP500", icon: "fa-solid fa-flag-usa", name_zh: "标普500", name_en: "S&P 500", cagr: 0.08 },
     "CSI300": { id: "CSI300", icon: "fa-solid fa-yen-sign", name_zh: "沪深300", name_en: "CSI 300", cagr: 0.03 }
 };
@@ -285,4 +285,5 @@ function drawChart(labels, wealth, principal, splitYear) {
             }
         }
     });
+
 }
