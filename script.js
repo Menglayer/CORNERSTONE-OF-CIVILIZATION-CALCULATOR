@@ -174,8 +174,6 @@ function calculate() {
     // 修改点：主数字 APY 保留 2 位小数
     document.getElementById('resApyBig').innerText = (effectiveRate * 100).toFixed(2) + "%";
     
-    document.getElementById('resPastValueSmall').innerText = formatMoney(pastWealth);
-    
     animateValue('resFutureValue', currentWealth);
 
     // 绘制图表与表格
@@ -291,3 +289,4 @@ function drawChart(labels, wealth, principal, splitYear) {
         }
     });
 }
+
