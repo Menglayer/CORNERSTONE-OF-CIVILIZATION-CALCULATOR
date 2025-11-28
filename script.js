@@ -70,7 +70,8 @@ function initUI() {
         document.getElementById('stepUpVal').innerText = e.target.value + "%";
     });
 
-    document.getElementById('customApy').value = (ASSETS[state.asset].cagr * 100).toFixed(1);
+    // 修改点：初始化显示2位小数
+    document.getElementById('customApy').value = (ASSETS[state.asset].cagr * 100).toFixed(2);
 }
 
 function switchAsset(id) {
@@ -79,7 +80,8 @@ function switchAsset(id) {
         b.classList.remove('active');
         if(b.getAttribute('data-id') === id) b.classList.add('active');
     });
-    document.getElementById('customApy').value = (ASSETS[id].cagr * 100).toFixed(1);
+    // 修改点：切换资产时显示2位小数
+    document.getElementById('customApy').value = (ASSETS[id].cagr * 100).toFixed(2);
     calculate();
 }
 
@@ -168,8 +170,10 @@ function calculate() {
 
     // 更新 Dashboard UI
     animateValue('resPrincipal', currentPrincipal);
-    // 中间卡片：主数字显示年化( nominal or real )，小标签显示净值
-    document.getElementById('resApyBig').innerText = (effectiveRate * 100).toFixed(1) + "%";
+    
+    // 修改点：主数字 APY 保留 2 位小数
+    document.getElementById('resApyBig').innerText = (effectiveRate * 100).toFixed(2) + "%";
+    
     document.getElementById('resPastValueSmall').innerText = formatMoney(pastWealth);
     
     animateValue('resFutureValue', currentWealth);
@@ -190,11 +194,12 @@ function renderTable(data, splitYear) {
         let yearLabel = row.year <= splitYear ? `Year ${row.year}` : `Year ${row.year} (Fut)`;
         let profitClass = row.profit >= 0 ? 'positive' : 'negative';
         
+        // 修改点：表格收益率保留 2 位小数
         tr.innerHTML = `
             <td>${yearLabel}</td>
             <td>${formatMoney(row.principal)}</td>
             <td><strong>${formatMoney(row.balance)}</strong></td>
-            <td class="${profitClass}">${row.profit > 0 ? '+' : ''}${row.profit.toFixed(1)}%</td>
+            <td class="${profitClass}">${row.profit > 0 ? '+' : ''}${row.profit.toFixed(2)}%</td>
         `;
         tbody.appendChild(tr);
     });
@@ -285,7 +290,4 @@ function drawChart(labels, wealth, principal, splitYear) {
             }
         }
     });
-
 }
-
-
