@@ -287,3 +287,4 @@ function drawChart(labels, wealth, principal, splitYear) {
     });
 
 }
+
